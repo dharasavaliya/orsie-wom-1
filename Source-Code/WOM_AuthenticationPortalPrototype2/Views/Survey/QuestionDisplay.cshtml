@@ -1,0 +1,57 @@
+﻿@using WOM_AuthenticationPortalPrototype2.Controllers
+
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    string questionText = string.Empty;
+
+    int surveyID = 1;
+    int questionID = 1;
+    int previousQID = SurveyController.getPreviousQuestion(surveyID, questionID);
+    int nextQID = SurveyController.getNextQuestion(surveyID, questionID);
+    int linkID = SurveyController.getLinkID(surveyID, questionID);
+    DBL.Tables.datSurveyQuestions Q = SurveyController.getQuestion(questionID);
+    questionText = Q.questionText;
+
+}
+
+<form method="post" id="question">
+    <h3>@questionText</h3>
+
+    @switch (Q.questionType)
+    {
+        case "SA":
+            <input type="text" value="starting text" name='questionResponse' />
+            break;
+        case "LA":
+            <input type="text" value="starting text" name='questionResponse' />
+            break;
+        case "MC":
+            @foreach (DBL.Tables.datQuestionOptions qs in SurveyController.getQuestionOptions(Q.questionID))
+            {
+                <input type="radio" name="questionReponse" value="@qs.optionID" /> @qs.optionText <br />
+            }
+            break;
+        default:
+            break;
+    }
+    @if (previousQID > 0)
+    {
+        <input type="button" value="previous" onclick="someJavascriptFunction(@SurveyController.getPreviousQuestion(surveyID, questionID));" />
+    }
+    @if (nextQID > 0)
+    {
+        <input type="submit" value="next" />
+    }
+    else
+    {
+        <input type="submit" value="finish" />
+    }
+
+
+
+
+
+</form>

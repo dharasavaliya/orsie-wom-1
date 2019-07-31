@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "AddClientToCourse";
+}
+
+<h1>Add Client To a Course</h1>
+
+<h2>List of available course</h2>
+
+<label for="Input_ClientID">Client ID: </label>
+<label for="Input_ClientName">Client Name: </label>
+
+
+<table class="table-bordered">
+    <tr class="table-hover">
+        <th> Select Course</th>
+        <th>Course code</th>
+        <th>Course name</th>
+        <th> Program</th>
+    </tr>
+    <tr>
+        <td><input type="checkbox" class="checkmark" name="selectCourse"> </td>
+        <td>MKT0023</td>
+        <td>Marketing</td>
+        <td>Introduction to Business</td>
+    </tr>
+
+    <tr>
+        <td><input type="checkbox" class="checkmark" name="selectCourse"> </td>
+        <td>ACCT0083</td>
+        <td>Introduction to Accounting I</td>
+        <td>Introduction to Business</td>
+    </tr>
+
+    <tr>
+        <td><input type="checkbox" class="checkmark" name="selectCourse"> </td>
+        <td>SCM8956</td>
+        <td>Supply Chain and Management</td>
+        <td>Introduction to Business</td>
+    </tr>
+</table>
+
+<button type="submit" class="btn btn-primary" onclick="return confirm('Changes made successfully');">Add Courses</button>
+<button type="submit" class="btn btn-primary" onclick="return confirm('Changes made successfully');">Remove Courses</button>
+
