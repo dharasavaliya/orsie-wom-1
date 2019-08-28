@@ -1,0 +1,160 @@
+﻿@{
+    ViewData["Title"] = "SurveyFeedback";
+}
+
+<div style="background-color:mintcream; padding:20px,20px,20px,20px">
+<h2 style="text-align:center; color:midnightblue">Survey Feedback</h2>
+    </div>
+
+    <div class="form-style-10" style="background-color:white; color:midnightblue">
+        <form action="./SurveyFeedback" method="post">
+
+            <div class="section" style="background-color:lightcyan"><hr /><h5><span>1. </span>Personal Information</h5><br /></div>
+            <div class="inner-wrap">
+                <p><label>First Name* </label><br /><input type="text" name="firstName" /></p>
+                <p><label>Last Name* </label><br /><input type="text" name="lastName" /></p>
+                <p><label>Date of Birth </label><br /><input type="date" name="dateOfBirth" /></p>
+                <p><label>Gender</label><br /><input type="text" name="gender" /></p>
+            </div>
+
+            <div class="section" style="background-color:lightcyan"><hr /><h5><span>2. </span>Contact Information</h5><br /></div>
+            <div class="inner-wrap">
+                <p><label>Email Address* </label> <br /><input type="email" name="emailAddress" /></p>
+                <p><label>Confirm Email Address*</label><br /><input type="email" name="confirmEmailAddress" /></p>
+                <p><label>Phone Number* </label><br /><input type="tel" name="phoneNumber" /></p>
+                <p><label>Street Address*</label><br /> <textarea name="streetAddress1"></textarea></p>
+                <p><label>Apt/ Suite/ Other</label><br /><textarea name="streetAddress2"></textarea></p>
+                <p><label>Province / Region* </label><br /><input type="text" name="province" /></p>
+                <p><label>City*</label><br /><input type="text" name="city" /></p>
+                <p><label>Postal Code* </label><br /><input type="text" name="postalCode" /></p>
+                <p><label>Country*</label><br /><input type="text" name="country" /></p>
+                <p><label>Website</label><br /><input type="text" name="ownWebsite" /></p>
+                <p><label>Profile Link</label><br /><input type="url" name="profileLink" /></p>
+            </div>
+
+            <div class="section" style="background-color:lightcyan"><hr /><h5><span>3. </span>Venture Information</h5><br /></div>
+            <div class="inner-wrap">
+                <p><label>Venture Name*</label> <br /><input type="text" name="ventureName" /></p>
+                <p>
+                    <label>
+                        Type of Venture*<br />
+                        <select>
+                            <option value="profit">For Profit</option>
+                            <option value="nonProfit">Not For Profit</option>
+                            <option value="profitSocialEnterprise">For Profit Social Enterprise</option>
+                            <option value="coOperative">Co-operative</option>
+                        </select>
+                    </label>
+                </p>
+                <p><label>Industry /Support Area* </label><br /><input type="text" name="industryArea" /></p>
+                <p>
+                    <label>
+                        Stage of Venture*<br />
+                        <select>
+                            <option title="You have an idea and are exploring the market and technology with respect to that idea" value="profit">Stage 0 - IDEA</option>
+                            <option title="You've identified a possible new product or service to introduce to the market at a profit. Your value proposition is established; you are testing ideas and identifying customers; you are looking into financing opportunities" value="nonProfit">Stage 1 - DISCOVERY</option>
+                            <option title="You have an established business model; you have a minimum viable product or MVP; you have verified your customers; you have some customer orders" value="profitSocialEnterprise">Stage 2 - VALIDATION</option>
+                            <option title="Customers are being acquired efficiently, product is deliverable at a profit and business model is being fine-tuned; You are pursuing early stage VC" value="coOperative">Stage 3 - EFFICIENCY</option>
+                            <option title="You have a validated product and market; You're attempting to drive firm growth aggressively; You're seeking A Round financing, making executive hires and refining your process" value="coOperative">Stage 4 - SCALE</option>
+                        </select>
+                    </label>
+                </p>
+                <p><label>Website </label> <br /><input type="text" name="ventureWebsite" /></p>
+                <p><label>Date of Founding* </label><br /><input type="date" name="dateOfFounding" /></p>
+                <p><label>How did you hear about AI sales coaching program?* </label><br /><textarea name="heardFrom"></textarea></p>
+            </div>
+
+            <div class="section"  style="background-color:lightcyan"><hr /><h5><span>4. </span>Venture Information</h5><br /></div>
+            <div class="inner-wrap">
+                <p><label>Which programs are you actively engaged with to help your drive sales? </label> <br /><textarea name="activePrograms"></textarea></p>
+                <p><label>Do you have a working prototype or MVP?*</label> <br /> <input type="text" name="prototype" /></p>
+                <p><label>Do you have any paying customers?* </label> <br /><input type="text" name="havePayingCustomers" /></p>
+                <p><label>Do you have any non-paying users/customers?* </label>  <br /><input type="text" name="haveNonpayingCustomers" /></p>
+                <p><label>Do you have any patents filed/ granted?* </label>  <br /><input type="text" name="havePatentsFiled" /></p>
+                <p><label>No. of patents filed?* </label> <br /><input type="number" name="noPatentsFiled" /></p>
+                <p><label>No. of patents granted?*</label> <br /> <input type="number" name="noPatentsGranted" /></p>
+                <p><label>What is your annual revenue for the past year?*</label>  <br /><input type="number" name="noPatentsGranted" /></p>
+                <p><label>Please describe the ownership of the patents* </label> <br /><textarea name="ownership"></textarea></p>
+            </div>
+
+            <div class="section"  style="background-color:lightcyan"><hr /><h5><span>5. </span>Venture Information</h5><br /></div>
+            <div class="inner-wrap">
+                <p><label>Have you received any external funding? * </label><br /><input type="text" name="haveExternalFunding" title="including friends & family, angels, VCs, grants, loans, crowdfunding, ICO, etc." /></p>
+                <p><label>Please provide the details of the funding you've received:* </label><br /><input type="text" name="receivedFundDetails" /></p>
+                <p><label>Is your start-up an extension of, or a spin-off from another business/organization? *</label><br /> <input type="text" name="isExtentionBusiness" title="including friends & family, angels, VCs, grants, loans, crowdfunding, ICO, etc." /></p>
+                <p><label>Provide the name of your parent organization *</label><br /><input type="text" name="parentOrganization" title="including friends & family, angels, VCs, grants, loans, crowdfunding, ICO, etc." /></p>
+            </div>
+
+            <div class="section" style="background-color:lightcyan"><hr /><h5><span>6. </span>Venture Description</h5><br /></div>
+            <div class="inner-wrap">
+                <p><label>Quick Pitch* </label> <br />  <textarea name="quickPitch" title="Briefly describe your venture - 25 words"></textarea></p>
+                <p><label>Product /Service Overview* </label> <br /> <textarea name="productOverview" title="Describe how does your product or service work - 100 words"></textarea></p>
+                <p>
+                    <label>Target Customers * </label> <br /> <textarea name="targetCustomers" title="Describe who are your target customers - 100 words"></textarea>
+                </p>
+                <p>
+                    <label>Revenue Model*</label> <br />  <textarea name="revenueModel" title="Describe how does your venture generate revenue - 100 words"></textarea>
+                </p>
+                <p>
+                    <label>Current & Future Competitors* </label> <br /> <textarea name="currentCompetitors" title="Describe who are your current competitors and your future anticipated competitors - 100 words"></textarea>
+                <p>
+                    <label>Competitive Advantage*  </label> <br /><textarea name="compititiveAdvantage" title="Explain what differentiates you from your competitors - 100 words"></textarea>
+                </p>
+                <p>
+                    <label>Protection against imitators*  </label> <br />
+                    <textarea title="Explain how you plan to protect your venture from imitators - 100 words" name="protectionPlan"></textarea>
+                </p>
+                <p><label>How do you think the AI Sales Coaching Program can help you succeed?*  </label> <br /><textarea name="helpWithAI"></textarea></p>
+            </div>
+
+            <div class="section" style="background-color:lightcyan"><hr /><h5><span>7. </span>Social Enterprise Questions</h5><br /></div>
+            <div class="inner-wrap">
+                <p>
+                    <label>What is the social mission for your not-for-profit/social enterprise/co-operative? *</label><br />  <textarea name="socialMission" title="Your mission will include an action verb, a target population, and an outcome that implies something to measure. - 50 words"></textarea>
+                </p>
+                <p>
+                    <label>Describe how your venture is going to fulfill your social mission and how will you know you are successful:* </label><br /> <textarea name="helpFromVenture"></textarea>
+                </p>
+            </div>
+            <div class="section" style="background-color:lightcyan"><hr /><h5><span>8. </span>Personnel / Team Information </h5><br /></div>
+            <div class="inner-wrap">
+                <p>
+                    <label>
+                        Number of co-founders* <br />
+                        <select title="Total number of all equity sharing co-founders, not including employees, contractors, advisors or volunteers">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </label>
+                </p>
+                <p>
+                    <label>How many non-co founder team members do you have?*</label><br /> <input type="number" name="noOfNonCoFounders" title="Include any employees, and contractors. Do NOT include co-founders, mentors, volunteers or advisors." />
+                </p>
+            </div>
+
+            <div class="section" style="background-color:lightcyan"><hr /><h5><span>9. </span>Sales Effort </h5><br /></div>
+            <div class="inner-wrap">
+                <p><label>Who is responsible for selling? </label> <br /><input type="text" name="sellingResponsible" /></p>
+                <p><label>What is their level of professional sales experience? </label> <br /><input type="text" name="experienceLevel" /></p>
+                <p><label>What are the major sales challenges? </label> <br /><input type="text" name="salesChallenges" /></p>
+                <p><label>How long is the sales cycle?</label> <br /> <input type="number" name="salesCylceDuration" /></p>
+                <p><label>What is the average revenue per sale?</label> <br /> <input type="text" name="avgRevenure" /></p>
+                <p><label>How much client “live” conversation is involved in your pre-sales activities? </label> <br /><input type="text" name="involvedClientConversation" /></p>
+                <p><label>Do you sell directly over the phone?</label> <br /> <input type="text" name="sellByPhone" /></p>
+                <p><label>Do you sell directly in face to face settings?</label> <br /> <input type="text" name="faceToFaceSelling" /></p>
+                <p><label>What are the titles of your primary decision makers? </label> <br /> <input type="text" name="decisionmakersTitles" /></p>
+                <p><label>How many prospects does the salesperson manage? </label> <br /><input type="text" name="prospectsBySalesperson" /></p>
+                <p><label>Do you use a CRM solution? </label> <br /> <input type="text" name="crmSolution" /></p>
+                <p><label>What are the main steps in your sales process? </label> <br /><input type="text" name="mainSteps" /></p>
+                <p><label>What are your annual sales targets? </label> <br /><input type="text" name="salesTarget" /></p>
+                <p><label>How often do you meet or exceed your monthly sales targets? </label> <br /> <input type="text" name="meetMonthlySalesTarget" /></p>
+                <p><label>How often do you meet or exceed your annual sales targets? </label> <br /><input type="text" name="meetAnnualSalesTarget" /></p>
+                <p><label>How much do you wish to grow your sales by?</label> <br /> <textarea name="meetAnnualSalesTarget"></textarea> </p>
+                <p><label>Waiver *</label> <br /> <textarea name="waiver"></textarea></p>
+            </div>
+
+        </form>
+    </div>

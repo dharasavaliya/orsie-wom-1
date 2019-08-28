@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "ViewAllPrograms";
+}
+
+<h1>View All Programs</h1>
+
+<label for="Search">Search Program</label>
+<input class="form-control" type="text" id="Input_Search" name="Input.Search" value="" style="width:200px" />
+
+<label for="FilterBy">Filter by  </label>
+
+<label for="FilterByProgram">Program Length</label>
+<select>
+    <option value="One month">One month</option>
+    <option value="One year">One year</option>
+</select>
+
+<label for="FilterByIntake">Course</label>
+<select>
+    <option value="September 2019 ">Intro into programming</option>
+    <option value="May 2019">Intro into Database</option>
+    <option value="January 2020">Systems Development</option>
+</select>
+
+<button type="submit" class="btn btn-primary">Search</button>
+
+<table class="table-bordered">
+    <tr class="table-hover">
+        <th> Course Code</th>
+        <th>Name</th>
+        <th>Length</th>
+        <th>Next Intake</th>
+
+    </tr>
+    <tr>
+        <td>CPA</td>
+        <td><a asp-controller="Programs" asp-action="UpdateDeactivateProgram">Computer Programer Analyst </a></td>
+        <td>Three years</td>
+        <td>September 2019</td>
+    </tr>
+
+    <tr>
+        <td>CP</td>
+        <td><a asp-controller="Programs" asp-action="UpdateDeactivateProgram">Computer Programmer </a></td>
+        <td>Two year</td>
+        <td>September 2019 </td>
+    </tr>
+
+    <tr>
+        <td>CST</td>
+        <td><a asp-controller="Programs" asp-action="UpdateDeactivateProgram">Computer Systems Technicican </a> </ </td>
+        <td>Three year</td>
+        <td>January 2020</td>
+    </tr>
+</table>

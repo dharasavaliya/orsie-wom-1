@@ -1,0 +1,81 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav flex-grow-1">
+    @if (User.IsInRole("Admin"))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index">Profile</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" asp-area="" asp-controller="Datpersons" asp-action="Index">Manage Users</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Datclasses" asp-action="Index">Manage Classes</a>
+                <a class="dropdown-item" asp-area="" asp-controller="DatCourses" asp-action="Index">Manage Courses</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Survey" asp-action="Index">Manage Surveys</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Discussion" asp-action="Index">Manage Discussion</a>
+
+            </div>
+        </li>
+    }
+    else if (User.IsInRole("Client"))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="Index">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index">Profile</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" asp-area="" asp-controller="Client" asp-action="StudentCourseList">My Courses</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Client" asp-action="StudentClassInfo">My Classes</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Client" asp-action="ViewCourses">View Courses</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Survey" asp-action="TakeSurvey">Take Survey</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Client" asp-action="MyProgress">My Progress</a>
+
+            </div>
+        </li>
+    }
+    else if (User.IsInRole("Coach"))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Coach" asp-action="Index">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index">Profile</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" asp-area="" asp-controller="Coach" asp-action="Index">My Students</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Coach" asp-action="Index">My Courses</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Coach" asp-action="Index">My Classes</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Coach" asp-action="Index">View Courses</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Coach" asp-action="Index">My Student Progress</a>
+
+            </div>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+        <li>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About Us</a>
+        </li>
+        <li>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </li>
+    }
+</ul>

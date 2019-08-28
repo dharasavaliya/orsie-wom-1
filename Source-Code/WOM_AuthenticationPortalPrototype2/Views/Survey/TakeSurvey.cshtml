@@ -1,0 +1,252 @@
+﻿
+@{
+    ViewData["Title"] = "TakeSurvey";
+}
+
+<link href="~/css/wom.css" rel='stylesheet' type='text/css'>
+<script src="/Scripts/jquery-3.1.1.min.js"></script>
+@section scripts {
+
+    <script type="text/javascript">
+
+        var currentTab = 0; // Current tab is set to be the first tab (0)
+        showTab(currentTab); // Display the current tab
+
+        function showTab(n) {
+            // This function will display the specified tab of the form ...
+            var x = document.getElementsByClassName("tab");
+            x[n].style.display = "block";
+            // ... and fix the Previous/Next buttons:
+            if (n == 0) {
+                document.getElementById("prevBtn").style.display = "none";
+            } else {
+                document.getElementById("prevBtn").style.display = "inline";
+            }
+            if (n == (x.length - 1)) {
+                document.getElementById("nextBtn").innerHTML = "Submit";
+            } else {
+                document.getElementById("nextBtn").innerHTML = "Next";
+            }
+            // ... and run a function that displays the correct step indicator:
+            fixStepIndicator(n)
+        }
+
+        function nextPrev(n) {
+            // This function will figure out which tab to display
+            var x = document.getElementsByClassName("tab");
+            // Exit the function if any field in the current tab is invalid:
+            if (n == 1 && !validateForm()) return false;
+            // Hide the current tab:
+            x[currentTab].style.display = "none";
+            // Increase or decrease the current tab by 1:
+            currentTab = currentTab + n;
+            // if you have reached the end of the form... :
+            if (currentTab >= x.length) {
+                //...the form gets submitted:
+                document.getElementById("regForm").submit();
+                return false;
+            }
+            // Otherwise, display the correct tab:
+            showTab(currentTab);
+        }
+
+        function validateForm() {
+            // This function deals with validation of the form fields
+            var x, y, i, valid = true;
+            x = document.getElementsByClassName("tab");
+            y = x[currentTab].getElementsByTagName("input");
+            // A loop that checks every input field in the current tab:
+            for (i = 0; i < y.length; i++) {
+                // If a field is empty...
+                if (y[i].value == "") {
+                    // add an "invalid" class to the field:
+                    y[i].className += " invalid";
+                    // and set the current valid status to false:
+                    valid = false;
+                }
+            }
+            // If the valid status is true, mark the step as finished and valid:
+            if (valid) {
+                document.getElementsByClassName("step")[currentTab].className += " finish";
+            }
+            return valid; // return the valid status
+        }
+
+        function fixStepIndicator(n) {
+            // This function removes the "active" class of all steps...
+            var i, x = document.getElementsByClassName("step");
+            for (i = 0; i < x.length; i++) {
+                x[i].className = x[i].className.replace(" active", "");
+            }
+            //... and adds the "active" class to the current step:
+            x[n].className += " active";
+        }
+
+    </script>
+
+}
+
+
+@*<div class="form-style-10">*@
+@*<h1>Women on the Move</h1>
+    <h3>AI Sales Coaching Program 2019 - Online Survey</h3>*@
+<form id="regForm" action="./SurveyFeedback" method="post" class="form-style-10">
+
+    <!-- One "tab" for each step in the form: -->
+    <div class="tab">
+        <h3>Personal Information:</h3>
+        <p><input id="1" type="text" name="firstName" placeholder="First name..." oninput="this.className = ''"></p>
+        <p><input id="2" type="text" name="lastName" placeholder="Last name..." oninput="this.className = ''"></p>
+        <p><input id="3" type="date" name="dateOfBirth" placeholder="Date of Birth ..." oninput="this.className = ''"></p>
+        <p>
+            <select oninput="this.className = ''" id="4">
+                <option value="noneSelected">Gender ...</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="others">Others</option>
+            </select>
+        </p>
+    </div>
+
+    <div class="tab">
+        <h3>Contact Information:</h3>
+        <p><input id="5" type="email" name="email" placeholder="Email Address..." oninput="this.className = ''"></p>
+        <p><input id="6" type="email" name="confirmEmail" placeholder="Confirm Email Address..." oninput="this.className = ''"></p>
+        <p><input id="7" type="tel" name="phone" placeholder="Phone Number..." oninput="this.className = ''"></p>
+        <p><input id="8" type="text" name="ownWebsite" placeholder="Website ..." oninput="this.className = ''"></p>
+        <p><input id="9" type="text" name="profileLink" placeholder="Profile Link ..." oninput="this.className = ''"></p>
+    </div>
+
+    <div class="tab">
+        <h3>Contact Information: (Continue ...)</h3>
+        <p><textarea id="10" name="streetAddress1" placeholder="Street Address ..." oninput="this.className = ''"></textarea></p>
+        <p><textarea id="11" name="streetAddress2" placeholder="Apt/ Suite/ Other ..." oninput="this.className = ''"></textarea></p>
+        <p><input id="12" type="text" name="city" placeholder="City ..." oninput="this.className = ''"></p>
+        <p><input id="13" type="text" name="province" placeholder="Province / Region ..." oninput="this.className = ''"></p>
+        <p><input id="14" type="text" name="postalCode" placeholder="Postal Code ..." oninput="this.className = ''"></p>
+        <p><input id="15" type="text" name="country" placeholder="Country ..." oninput="this.className = ''"></p>
+    </div>
+
+    <div class="tab">
+        <h3>Venture Information:</h3>
+        <p><input id="16" type="text" name="ventureName" placeholder="Venture Name * ..." oninput="this.className = ''"></p>
+        <p>
+            <select id="17">
+                <option value="ventureType">Type of Venture</option>
+                <option value="profit">For Profit</option>
+                <option value="nonProfit">Not For Profit</option>
+                <option value="profitSocialEnterprise">For Profit Social Enterprise</option>
+                <option value="coOperative">Co-operative</option>
+            </select>
+        </p>
+        <p><input id="18" type="text" name="industryArea" placeholder="Industry /Support Area * ..." oninput="this.className = ''"></p>
+        <p>
+            <select id="19">
+                <option value="ventureStage">Stage of Venture</option>
+                <option title="You have an idea and are exploring the market and technology with respect to that idea" value="profit">Stage 0 - IDEA</option>
+                <option title="You've identified a possible new product or service to introduce to the market at a profit. Your value proposition is established; you are testing ideas and identifying customers; you are looking into financing opportunities" value="nonProfit">Stage 1 - DISCOVERY</option>
+                <option title="You have an established business model; you have a minimum viable product or MVP; you have verified your customers; you have some customer orders" value="profitSocialEnterprise">Stage 2 - VALIDATION</option>
+                <option title="Customers are being acquired efficiently, product is deliverable at a profit and business model is being fine-tuned; You are pursuing early stage VC" value="coOperative">Stage 3 - EFFICIENCY</option>
+                <option title="You have a validated product and market; You're attempting to drive firm growth aggressively; You're seeking A Round financing, making executive hires and refining your process" value="coOperative">Stage 4 - SCALE</option>
+            </select>
+        </p>
+        <p><input id="20" type="text" name="ventureWebsite" placeholder="Venture Website ..." oninput="this.className = ''"></p>
+        <p><input id="21" type="date" name="dateOfFounding" placeholder="Date of Founding ..." oninput="this.className = ''"></p>
+        <p><input id="22" type="text" name="heardFrom" placeholder="How did you hear about AI sales coaching program? ..." oninput="this.className = ''"></p>
+    </div>
+
+    <div class="tab">
+        <h3>Venture Information (Continued ... ):</h3>
+        <p><textarea id="23" name="activePrograms" placeholder="Which programs are you actively engaged with to help your drive sales? " oninput="this.className = ''"></textarea></p>
+        <p><input id="24" type="text" name="prototype" placeholder="Do you have a working prototype or MVP? " oninput="this.className = ''"></p>
+        <p><input id="25" type="text" name="havePayingCustomers" placeholder="Do you have any paying customers? " oninput="this.className = ''"></p>
+        <p><input id="26" type="text" name="haveNonpayingCustomers" placeholder="Do you have any non-paying users/customers?" oninput="this.className = ''"></p>
+        <p><input id="27" type="text" name="havePatentsFiled" placeholder="Do you have any patents filed/ granted? " oninput="this.className = ''"></p>
+        <p><input id="28" type="number" name="totalPatentsFiled" placeholder="No. of patents filed? " oninput="this.className = ''"></p>
+        <p><input id="29" type="number" name="totalPatentsGranted" placeholder="No. of patents granted? " oninput="this.className = ''"></p>
+        <p><input id="30" type="text" name="pastYearRevenue" placeholder="What is your annual revenue for the past year? " oninput="this.className = ''"></p>
+        <p><textarea id="31" name="ownership" placeholder="Please describe the ownership of the patents. " oninput="this.className = ''"></textarea></p>
+    </div>
+
+    <div class="tab">
+        <h3>Venture Information (Continued ... ):</h3>
+        <p><textarea id="32" name="haveExternalFunding" title="including friends & family, angels, VCs, grants, loans, crowdfunding, ICO, etc." placeholder="Have you received any external funding? " oninput="this.className = ''"></textarea></p>
+        <p><textarea id="33" name="receivedFundDetails" placeholder="Please provide the details of the funding you've received. " oninput="this.className = ''"></textarea></p>
+        <p><input id="34" type="text" name="isExtention" placeholder="Is your start-up an extension of, or a spin-off from another business/organization? " title="including friends & family, angels, VCs, grants, loans, crowdfunding, ICO, etc." oninput="this.className = ''"></p>
+        <p><input id="35" type="text" name="parentOrganization" placeholder="Provide the name of your parent organization? " title="including friends & family, angels, VCs, grants, loans, crowdfunding, ICO, etc." oninput="this.className = ''"></p>
+    </div>
+
+    <div class="tab">
+        <h3>Venture Information (Continued ... ):</h3>
+        <p><textarea id="36" name="quickPitch" title="Briefly describe your venture - 25 words" placeholder="Quick Pitch " oninput="this.className = ''"></textarea></p>
+        <p><textarea id="37" name="productOverview" title="Describe how does your product or service work - 100 words" placeholder="Product /Service Overview " oninput="this.className = ''"></textarea></p>
+        <p><textarea id="38" name="targetCustomers" placeholder="Target Customers " title="Describe who are your target customers - 100 words" oninput="this.className = ''"></textarea></p>
+        <p><textarea id="39" name="revenueModel" placeholder="Revenue Model " title="Describe how does your venture generate revenue - 100 words" oninput="this.className = ''"></textarea></p>
+        <p><textarea id="40" name="currentCompetitors" placeholder="Current & Future Competitors" title="Describe who are your current competitors and your future anticipated competitors - 100 words"></textarea></p>
+        <p><textarea id="41" name="compititiveAdvantage" placeholder="Competitive Advantage" title="Explain what differentiates you from your competitors - 100 words"></textarea></p>
+        <P><textarea id="42" name="protectionPlan" placeholder="Protection against imitators*" title="Explain how you plan to protect your venture from imitators - 100 words"></textarea></P>
+        <P><textarea id="43" name="helpWithAI" placeholder="How do you think the AI Sales Coaching Program can help you succeed?*"></textarea>
+    </div>
+
+    <div class="tab">
+        <h3>Social Enterprise Questions:</h3>
+        <p><textarea id="44" placeholder="What is the social mission for your not-for-profit/social enterprise/co-operative? " name="socialMission" title="Your mission will include an action verb, a target population, and an outcome that implies something to measure. - 50 words"></textarea></p>
+        <p><textarea id="45" name="helpFromVenture" placeholder="Describe how your venture is going to fulfill your social mission and how will you know you are successful"></textarea></p>
+    </div>
+
+    <div class="tab">
+        <h3>Personnel / Team Information</h3>
+        <select id="46" title="Total number of all equity sharing co-founders, not including employees, contractors, advisors or volunteers">
+            <option value="1">No. of Co. Founders</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <p><textarea id="47" name="noOfNonCoFounders" title="Include any employees, and contractors. Do NOT include co-founders, mentors, volunteers or advisors." placeholder="How many non-co founder team members do you have?"></textarea></p>
+    </div>
+
+    <div class="tab">
+        <h3>Sales Effort</h3>
+        <p><input id="48" name="sellingResponsible" placeholder="Who is responsible for selling?"></p>
+        <p><input id="49" name="experienceLevel" placeholder="What is their level of professional sales experience?"></p>
+        <p><input id="50" name="salesChallenges" placeholder="What are the major sales challenges? "></p>
+        <p><textarea id="51" name="salesCylceDuration" placeholder="How long is the sales cycle?"></textarea></p>
+        <p><input id="52" name="sellingResponsible" placeholder="Who is responsible for selling?"></p>
+        <p><input id="53" name="avgRevenure" placeholder="What is the average revenue per sale?"></p>
+        <p><input id="54" name="involvedClientConversation" placeholder="How much client “live” conversation is involved in your pre-sales activities?"></p>
+        <p><input id="55" name="sellByPhone" placeholder="Do you sell directly over the phone?"></p>
+        <p><input id="56" name="faceToFaceSelling" placeholder="Do you sell directly in face to face settings?"></p>
+        <p><input id="57" name="decisionmakersTitles" placeholder="What are the titles of your primary decision makers?"></p>
+        <p><input id="58" name="prospectsBySalesperson" placeholder="How many prospects does the salesperson manage? "></p>
+        <p><input id="59" name="crmSolution" placeholder="Do you use a CRM solution? " type="text" /></p>
+        <p><input id="60" name="mainSteps" placeholder="What are the main steps in your sales process? " type="text" /></p>
+        <p><input id="61" name="salesTarget" placeholder="What are your annual sales targets? " type="text" /></p>
+        <p><input id="62" name="meetMonthlySalesTarget" placeholder="How often do you meet or exceed your monthly sales targets? " type="text" /></p>
+        <p><input id="63" name="meetAnnualSalesTarget" placeholder="How often do you meet or exceed your annual sales targets? " type="text" /></p>
+        <p><input id="64" name="salesGrowBy" placeholder="How much do you wish to grow your sales by? " type="text" /></p>
+        <p><textarea id="65" name="waiver" placeholder="Waiver"></textarea></p>
+    </div>
+
+    <div style="overflow:auto;">
+        <div style="float:right;">
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+            <button type="button" id="nextBtn" asp-controller="Survey" asp-action="SurveyFeedback" onclick="nextPrev(1)">Next</button>
+        </div>
+    </div>
+
+    <!-- Circles which indicates the steps of the form: -->
+    <div style="text-align:center;margin-top:40px;">
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+
+    </div>
+</form>

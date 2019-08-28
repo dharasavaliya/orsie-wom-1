@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Update/Deactivate Coach";
+}
+<h1>@ViewData["Title"]</h1>
+<div class="form-group">
+    <label for="removeCoach">Remove Coach</label>
+    <input type="checkbox" class="checkmark" name="removeClient">
+</div>
+<div class="form-group">
+    <label for="Input_CoachID">Coach ID</label>
+    <input class="form-control" type="text" id="Input_ClientID" name="Input.ClientID" value="" style="width:200px" />
+</div>
+<div class="form-group">
+    <label for="Input_Name">Name</label>
+    <input class="form-control" type="text" id="Input_Name" name="Input.Name" value="" />
+</div>
+<div class="form-group">
+    <label for="Input_Course">Program</label>
+    <input class="form-control" type="text" id="Input_Program" name="Input.Program" value="" style="width:500px" />
+</div>
+<div class="form-group">
+    <label for="Input_RoomNumber">Room Number</label>
+    <input class="form-control" type="text" id="Input_RoomNumber" name="Input.RoomNumber" value="" style="width:500px" />
+</div>
+<div class="form-group">
+    <label for="Input_OfficeHours">Office Hours</label>
+    <input class="form-control" type="text" id="Input_Program" name="Input.Program" value="" style="width:500px" />
+</div>
+<div class="form-group">
+    <label for="Input_Address1">Address 1</label>
+    <input class="form-control" type="text" id="Input_Address1" name="Input.Address1" value="" />
+</div>
+<div class="form-group">
+    <label for="Input_Address2">Address 2</label>
+    <input class="form-control" type="text" id="Input_Address2" name="Input.Address2" value="" />
+</div>
+<div class="form-group">
+    <label for="Input_City">City</label>
+    <input class="form-control" type="text" id="Input_City" name="Input.City" value="" style="width:200px" />
+</div>
+<div class="form-group">
+    <label for="Input_StateProvince">State/Province</label>
+    <input class="form-control" type="text" id="Input_StateProvince" name="Input.StateProvince" value="" style="width:200px" />
+</div>
+<div class="form-group">
+    <label for="Input_ZipPostal">ZIP/PostalCode</label>
+    <input class="form-control" type="text" id="Input_ZipPostal" name="Input.ZipPostal" value="" style="width:200px" />
+</div>
+<div class="form-group">
+    <label for="Input_Home">Email</label>
+    <input class="form-control" type="text" id="Input_Email" name="Input.Email" value="" style="width:200px" />
+</div>
+<div class="form-group">
+    <label for="Input_Home">Home Phone</label>
+    <input class="form-control" type="text" id="Input_Home" name="Input.Home" value="" style="width:200px" />
+</div>
+<div class="form-group">
+    <label for="Input_Mobile">Mobile Phone</label>
+    <input class="form-control" type="text" id="Input_Mobile" name="Input.Mobile" value="" style="width:200px" />
+</div>
+<div class="form-group">
+    <label for="Input_Business">Business Phone</label>
+    <input class="form-control" type="text" id="Input_Business" name="Input.Business" value="" style="width:200px" />
+</div>
+
+
+<a class="btn btn-primary" asp-controller="Home" asp-action="Index" role="button">Update</a>

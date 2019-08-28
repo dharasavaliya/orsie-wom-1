@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Women on the Move | PASSION , PURPOSE, PROSPERITY";
+}
+<h2 class="text-center">@ViewData["Message"]</h2>
+<div class="row"><br/></div>
+<div class="row">
+    <div class="col-6">
+        <div class="text-center"><img src="~/image/logo.png" style="height:10%; width:40%;" /></div>
+        <div class="h5 font-weight-light text-justify p-5 m-lg-5 p-lg-2">
+            Women on the Move is an empowerment place.  We provide essential “Get Started and Grow Business
+            Services” for women entrepreneurs looking to build a sustainable, successful and
+            significant business. Our space is suited for women entrepreneurs in early stages, across all
+            industries, and serving B2B markets.
+        </div>
+    </div>
+
+    <div class="col-6">
+
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputName">Name</label>
+                    <input type="text" class="form-control" id="inputName" placeholder="Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="inputMessage">Message</label><br />
+                    <textarea rows="4" cols="74">
+                        What you would like to know
+                    </textarea>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

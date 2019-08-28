@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    @if (User.Identity.Name == "dhara.savaliya@dcmail.ca")
+    {
+        @*<h1>Hello @User.Identity.Name</h1>*@
+        <h1>Hello Dhara</h1>
+        <p>You are the Student who are enrolled to learn </p>
+    }
+    else if (User.Identity.Name == "heather.gamble@womenonthemove.club")
+    {
+        <h1>Hello Heather</h1>
+        <p>Your are the Admin</p>
+    }
+    else if (User.Identity.Name == "jodi.moore@womenonthemove.club")
+    {
+        <h1>Hello Jodi</h1>
+        <p>Your are the Coach</p>
+    }
+    else
+    {
+        <h1>Hello @User.Identity.Name</h1>
+        <p>Your are the registered user</p>
+    }
+}
+else
+{
+    //return RedirectToRouteResult(Controller = "Home", Action = "Index")
+    @*@Url.Action("Index", "Home")*@
+
+
+}
