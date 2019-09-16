@@ -36,7 +36,7 @@ namespace WOM_AuthenticationPortalPrototype2.Controllers
 
         public IActionResult StudentClassInfo()
         {
-            ViewData["Message"] = "Class - 1";
+            ViewData["Message"] = "Learning Curve";
             return View();
         }
     }
